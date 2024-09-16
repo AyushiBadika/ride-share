@@ -1,0 +1,53 @@
+/* :root {
+  --color-primary: 1, 175, 244;
+} */
+
+.navbar {
+  @apply flex justify-between items-center px-4 sm:px-12 md:px-16 lg:px-20 py-4 z-10 left-0 right-0 top-0 bg-white fixed;
+}
+
+.logo {
+  @apply flex items-center justify-center gap-1;
+}
+
+.logo img {
+  @apply w-10;
+}
+
+.logo h3 {
+  @apply text-[#054752] font-bold text-2xl;
+}
+
+.menu {
+  @apply flex gap-3 md:gap-8 items-center relative;
+}
+
+.menuItem {
+  @apply flex gap-2 items-center;
+}
+
+.hide {
+  @apply md:flex items-center gap-2 hidden;
+}
+
+.menuIcon {
+  @apply block md:hidden;
+}
+
+.authDropDown {
+  @apply absolute -bottom-[120px] right-0 bg-white w-48;
+}
+
+.authDropDown > div {
+  @apply p-4   cursor-pointer w-full;
+}
+
+.space {
+  @apply flex justify-between w-full;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-left: 12rem;
+}

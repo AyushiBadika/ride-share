@@ -1,0 +1,9 @@
+.intro {
+  @apply mt-[42vh] grid grid-cols-3 px-36 gap-12 py-20 pt-28 bg-white;
+}
+.icon {
+  @apply w-12 h-12 mb-4 text-gray-400;
+}
+.heading {
+  @apply font-bold;
+}

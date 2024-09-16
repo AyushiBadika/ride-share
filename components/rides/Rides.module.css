@@ -1,0 +1,7 @@
+.pipeLine {
+  /* @apply flex  */
+}
+
+.circle {
+  @apply border-2 border-[#054752];
+}

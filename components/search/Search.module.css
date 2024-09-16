@@ -1,0 +1,14 @@
+.formDiv {
+  @apply bg-[#01AFF4] md:bg-transparent relative w-full h-60 md:h-0 flex justify-center;
+}
+.form {
+  @apply absolute w-[90%] top-1/2 -translate-y-1/4 md:-translate-y-0 bg-white md:w-[80vw] mt-20 md:mt-0 z-10   rounded-2xl md:left-1/2 md:-translate-x-1/2 md:flex justify-between md:pl-4 shadow-lg;
+}
+
+.input {
+  @apply outline-0 text-gray-500 font-semibold w-full py-2 md:py-0;
+}
+
+.btn {
+  @apply bg-[#01AFF4] text-white md:rounded-r-2xl rounded-b-2xl md:rounded-bl-none flex justify-center items-center w-full md:w-1/4;
+}
