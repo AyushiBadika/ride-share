@@ -6,8 +6,8 @@ import toast from "react-hot-toast";
 import Loader from "../shared/Loader";
 
 export default function Search({ setRides }) {
-  const [from, setFrom] = useState("jaiur");
-  const [to, setTo] = useState("delhi");
+  const [from, setFrom] = useState("Jaipur");
+  const [to, setTo] = useState("Delhi");
   const [date, setDate] = useState("2024-09-10T00:00:00.000+00:00");
   const [fromCitiesList, setFromCitiesList] = useState([]);
   const [toCitiesList, setToCitiesList] = useState([]);
@@ -15,7 +15,6 @@ export default function Search({ setRides }) {
 
   const handleSearchRide = async (e) => {
     e.preventDefault();
-    console.log(date);
     try {
       setIsFetching(true);
 

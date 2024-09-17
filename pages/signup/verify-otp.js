@@ -26,19 +26,15 @@ const Button = tw.button`
 bg-[#00AFF5] text-white rounded-2xl px-4 py-2 mt-4 min-w-[100px] flex justify-center
 `;
 
-export default function SignUp() {
-  const [name, setName] = useState("");
+export default function VerifyOtp() {
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [viewPassword, setViewPassword] = useState(false);
   const [otpActive, setOtpActive] = useState(false);
   const [otp, setOtp] = useState("");
   const [otpToken, setOtpToken] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleSignUp = async (e) => {
+  const handleSendOtp = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const res = await postApi.signUp({ body: { name, email, phone, password } });
@@ -79,26 +75,15 @@ export default function SignUp() {
     </div>
   ) : (
     <div className="flex flex-col justify-center items-center w-full h-full mt-28 px-2">
-      <Heading>What's your email and password?</Heading>
+      <Heading>What's your email?</Heading>
 
       <Form action="">
-        <Input autoComplete={true} type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <Input autoComplete={true} type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <Input autoComplete={true} type="number" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} />
-        <div className="relative">
-          <Input type={viewPassword ? "text" : "password"} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          {password.length > 0 && (
-            <div onClick={() => setViewPassword(!viewPassword)} className="absolute top-[22.5%] right-[10px]">
-              {viewPassword ? <VisibilityOffIcon className="fill-[#777]" /> : <VisibilityIcon className="fill-[#777]" />}
-            </div>
-          )}
-        </div>
         <p className="text-[#00AFF5] font-semibold cursor-pointer self-start" onClick={() => router.push("/login")}>
-          Already registered ? Login here
+          Already verified ? Login here
         </p>
-
-        <Button disabled={isLoading ? true : false} onClick={handleSignUp}>
-          {isLoading ? <Loader /> : "Sign Up"}
+        <Button disabled={isLoading ? true : false} onClick={handleSendOtp}>
+          {isLoading ? <Loader /> : "Sent OTP"}
         </Button>
       </Form>
     </div>

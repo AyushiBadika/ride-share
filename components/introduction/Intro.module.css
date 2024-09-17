@@ -1,5 +1,5 @@
 .intro {
-  @apply mt-[42vh] grid grid-cols-3 px-36 gap-12 py-20 pt-28 bg-white;
+  @apply mt-[36vh] md:mt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 px-12 md:px-16 lg:px-20 pt-48 md:pt-16 bg-white;
 }
 .icon {
   @apply w-12 h-12 mb-4 text-gray-400;

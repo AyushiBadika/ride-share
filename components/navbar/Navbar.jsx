@@ -3,6 +3,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddCircleOutlineSharpIcon from "@mui/icons-material/AddCircleOutlineSharp";
 import KeyboardArrowDownSharpIcon from "@mui/icons-material/KeyboardArrowDownSharp";
+import KeyboardArrowUpSharpIcon from "@mui/icons-material/KeyboardArrowUpSharp";
 import KeyboardArrowRightSharpIcon from "@mui/icons-material/KeyboardArrowRightSharp";
 import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
 import Link from "next/link";
@@ -27,21 +28,21 @@ export default function Navbar() {
       <div className={styles.menu}>
         <Link href="/">
           <div className={(styles.menuItem, styles.hide)}>
-            <SearchOutlinedIcon style={{ fontSize: "30px", fill: "#01AFF4" }} />
+            <SearchOutlinedIcon style={{ fontSize: "36px", fill: "#01AFF4" }} />
             <p>Search</p>
           </div>
         </Link>
         <Link href="/ride">
           <div className={(styles.menuItem, styles.hide)}>
-            <AddCircleOutlineSharpIcon style={{ fontSize: "30px", fill: "#01AFF4" }} />
+            <AddCircleOutlineSharpIcon style={{ fontSize: "36px", fill: "#01AFF4" }} />
             <p>Publish a ride</p>
           </div>
         </Link>
 
         <MenuIcon className={styles.menuIcon} />
         <div className={styles.menuItem} onClick={handleOpen}>
-          <AccountCircleSharpIcon style={{ fontSizeZ: "60px", fill: "#01AFF4" }} />
-          <KeyboardArrowDownSharpIcon />
+          <AccountCircleSharpIcon className="cursor-pointer" style={{ fontSize: "36px", fill: "#01AFF4" }} />
+          {open ? <KeyboardArrowUpSharpIcon className="cursor-pointer" /> : <KeyboardArrowDownSharpIcon className="cursor-pointer" />}
           {open && (
             <div className={styles.authDropDown}>
               <div>

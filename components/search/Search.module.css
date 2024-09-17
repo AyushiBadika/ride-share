@@ -1,5 +1,5 @@
 .formDiv {
-  @apply bg-[#01AFF4] md:bg-transparent relative w-full h-60 md:h-0 flex justify-center;
+  @apply bg-[#01AFF4] md:bg-transparent absolute bottom-[7.5%] w-full h-60 md:h-0 flex justify-center;
 }
 .form {
   @apply absolute w-[90%] top-1/2 -translate-y-1/4 md:-translate-y-0 bg-white md:w-[80vw] mt-20 md:mt-0 z-10   rounded-2xl md:left-1/2 md:-translate-x-1/2 md:flex justify-between md:pl-4 shadow-lg;
@@ -10,5 +10,5 @@
 }
 
 .btn {
-  @apply bg-[#01AFF4] text-white md:rounded-r-2xl rounded-b-2xl md:rounded-bl-none flex justify-center items-center w-full md:w-1/4;
+  @apply bg-[#01AFF4] py-4 md:p-0 text-white md:rounded-r-2xl rounded-b-2xl md:rounded-bl-none flex justify-center items-center w-full md:w-1/4;
 }
