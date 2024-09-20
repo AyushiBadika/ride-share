@@ -2,7 +2,7 @@ import "dotenv/config";
 import toast from "react-hot-toast";
 
 export async function api({ endpoint, method, body, headers = { "Content-Type": "application/json" } }) {
-  const response = await fetch(`http://localhost:5000${endpoint}`, {
+  const response = await fetch(`https://rideshare-server-84ng.onrender.com${endpoint}`, {
     method,
     body: JSON.stringify(body),
     headers,
@@ -17,7 +17,6 @@ export async function api({ endpoint, method, body, headers = { "Content-Type": 
     toast.error(result.err);
     return null;
   } else if (response.status === 401) {
-    localStorage.clear();
     toast.error(result.err);
     return null;
   } else {

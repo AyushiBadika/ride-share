@@ -6,8 +6,8 @@ import toast from "react-hot-toast";
 import Loader from "../shared/Loader";
 
 export default function Search({ setRides }) {
-  const [from, setFrom] = useState("Jaipur");
-  const [to, setTo] = useState("Delhi");
+  const [from, setFrom] = useState("Chittorgarh");
+  const [to, setTo] = useState("Jaipur");
   const [date, setDate] = useState("2024-09-10T00:00:00.000+00:00");
   const [fromCitiesList, setFromCitiesList] = useState([]);
   const [toCitiesList, setToCitiesList] = useState([]);
@@ -25,6 +25,10 @@ export default function Search({ setRides }) {
 
       const res = await getApi.searchRide({ from, to, date });
       if (res) {
+        if (res.length === 0) {
+          toast.error("No Ride Found");
+          return;
+        }
         setRides(res);
         toast.success("Rides fetched successfully!");
       }

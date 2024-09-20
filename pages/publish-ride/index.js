@@ -2,50 +2,56 @@ import React, { useState } from "react";
 import tw from "tailwind-styled-components";
 import { postApi } from "../../utils/api/endpoints";
 import toast from "react-hot-toast";
-import { useRouter } from "next/router";
+import Loader from "../../components/shared/Loader";
+import WithAuth from "../../components/hoc/WithAuth";
 
 const Form = tw.form`
 flex flex-col gap-4 items-center mt-28`;
 
 const Heading = tw.h1`
-text-3xl font-bold mb-10`;
+text-3xl font-bold mb-10 text-center`;
 
 const Input = tw.input`
- px-4 py-3  rounded-2xl w-[600px]
+ px-4 py-3 rounded-2xl w-[310px] xs:w-[420px] sm:w-[600px]
  outline-none bg-[#ECEDEC] focus:border-2 focus:border-[#00AFF5] flex 
 `;
 const Button = tw.button`
-bg-[#00AFF5] text-white rounded-2xl w-28 p-2 mt-6 flex items-center justify-center
+bg-[#00AFF5] text-white rounded-2xl min-w-32 px-4 py-2 mt-6 flex items-center justify-center
 `;
 
-export default function Ride() {
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
-  const [totalSeatsAvailable, setTotalSeatsAvailable] = useState("");
-  const [pricePerPassenger, setPricePerPassenger] = useState("");
+const Ride = () => {
+  const [from, setFrom] = useState("Chittorgarh");
+  const [to, setTo] = useState("Jaipur");
+  const [totalSeatsAvailable, setTotalSeatsAvailable] = useState(3);
+  const [pricePerPassenger, setPricePerPassenger] = useState(1000);
   const [departureDate, setDepartureDate] = useState("");
   const [vehicleDetails, setVehicleDetails] = useState({
-    company: "",
-    model: "",
-    makeYear: "",
+    company: "Tata",
+    model: "Nano ",
+    makeYear: "2009",
   });
 
   // States
   const [tripDetailsPage, setTripDetailsPage] = useState(true);
   const [vehicleDetailsPage, setVehicleDetailsPage] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handlePublish = async (e) => {
     e.preventDefault();
-    try {
-      const res = await postApi.ride({ body: { from: "jaipur", to: "delhi", totalSeatsAvailable: "1", pricePerPassenger: "100", departureDate } });
-      console.log(res);
-      if (res) {
-        toast.success("Ride published successfully!");
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message);
+
+    if (!from || !to || !departureDate || totalSeatsAvailable <= 0 || pricePerPassenger <= 0 || !vehicleDetails.company || !vehicleDetails.model || !vehicleDetails.makeYear) {
+      toast.error("Please fill all the required fields!");
+      return;
     }
+
+    setIsLoading(true);
+    const res = await postApi.ride({ body: { from, to, totalSeatsAvailable, pricePerPassenger, departureDate, vehicleDetails } });
+    if (res) {
+      toast.success("Ride published successfully!");
+      setTripDetailsPage(true);
+      setVehicleDetailsPage(false);
+    }
+    setIsLoading(false);
   };
 
   const handleVehicleDetails = (name, value) => {
@@ -91,10 +97,14 @@ export default function Ride() {
             >
               Previous
             </Button>
-            <Button onClick={handlePublish}>Publish ride</Button>
+            <Button disabled={isLoading ? true : false} onClick={handlePublish}>
+              {isLoading ? <Loader /> : "Publish Ride"}
+            </Button>
           </div>
         </>
       )}
     </Form>
   );
-}
+};
+
+export default WithAuth(Ride);

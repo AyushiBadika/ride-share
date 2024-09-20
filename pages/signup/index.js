@@ -8,7 +8,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const Heading = tw.h1`
-text-3xl font-bold mb-4 text-center`;
+text-3xl font-bold mb-6 text-center`;
 
 const SubHeading = tw.h3`
 text-xl font-semibold mb-8 text-center`;
@@ -79,7 +79,7 @@ export default function SignUp() {
     </div>
   ) : (
     <div className="flex flex-col justify-center items-center w-full h-full mt-28 px-2">
-      <Heading>What's your email and password?</Heading>
+      <Heading>Sign-Up to get started</Heading>
 
       <Form action="">
         <Input autoComplete={true} type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />

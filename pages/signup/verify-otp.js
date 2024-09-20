@@ -37,7 +37,7 @@ export default function VerifyOtp() {
   const handleSendOtp = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const res = await postApi.signUp({ body: { name, email, phone, password } });
+    const res = await postApi.resendOtp({ body: { email } });
 
     if (res) {
       setOtpToken(res.otpToken);
@@ -83,7 +83,7 @@ export default function VerifyOtp() {
           Already verified ? Login here
         </p>
         <Button disabled={isLoading ? true : false} onClick={handleSendOtp}>
-          {isLoading ? <Loader /> : "Sent OTP"}
+          {isLoading ? <Loader /> : "Send OTP"}
         </Button>
       </Form>
     </div>

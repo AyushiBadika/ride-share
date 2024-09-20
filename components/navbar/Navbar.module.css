@@ -3,7 +3,7 @@
 } */
 
 .navbar {
-  @apply flex justify-between items-center px-4 sm:px-12 md:px-16 lg:px-20 py-4 z-[1000] left-0 right-0 top-0 bg-white fixed;
+  @apply flex justify-between items-center px-2 sm:px-4 md:px-12 lg:px-16 py-4 z-[1000] left-0 right-0 top-0 bg-white fixed shadow-sm;
 }
 
 .logo {
@@ -19,7 +19,7 @@
 }
 
 .menu {
-  @apply flex gap-3 md:gap-8 items-center relative;
+  @apply flex md:gap-8 items-center relative;
 }
 
 .menuItem {
@@ -31,11 +31,11 @@
 }
 
 .menuIcon {
-  @apply block md:hidden;
+  @apply block sm:hidden;
 }
 
 .authDropDown {
-  @apply absolute -bottom-[120px] right-0 bg-white w-48 border-2 shadow-lg rounded-lg;
+  @apply absolute top-[125%] right-0 bg-white w-48 border-2 shadow-lg rounded-lg;
 }
 
 .authDropDown > div {
